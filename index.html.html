@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poukaz na donut zdarma</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
+        .voucher { border: 2px dashed #ff6600; padding: 20px; display: inline-block; }
+        .number { font-size: 24px; font-weight: bold; color: #d43f00; }
+    </style>
+</head>
+<body>
+    <div class="voucher">
+        <h2>Poukaz na DONUT ZDARMA!</h2>
+        <p>Ukázat tento kód na pokladně:</p>
+        <div class="number" id="voucherNumber">#?????</div>
+    </div>
+
+    <script>
+        function getStoredVoucher() {
+            let voucher = localStorage.getItem("voucherNumber");
+            if (!voucher) {
+                voucher = Math.floor(10000 + Math.random() * 90000); // Vygeneruje nové číslo
+                localStorage.setItem("voucherNumber", voucher); // Uloží do LocalStorage
+            }
+            return voucher;
+        }
+        document.getElementById("voucherNumber").textContent = "#" + getStoredVoucher();
+    </script>
+</body>
+</html>
